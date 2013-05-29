@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.prime.com.tr/ui">
+    
+<ui:composition template="/facelet-principal.xhtml">
+
+	<ui:define name="titulo">Multiplicação de Cadeia de Matrizes</ui:define>
+		
+	<ui:define name="conteudo">
+	
+  <h:form>
+	<h:panelGroup>
+		<h:outputLabel for="ordensDasMatrizes" value="Ordens das matrizes (entre vírgulas): " /><br />
+		<h:inputText id="ordensDasMatrizes" value="#{controladorCadeiaMatriz.ordensDasMatrizes}" label="Ordens das matrizes (entre vírgulas)"
+					 size="30" style="width:283px;" />
+		<h:outputLabel value="Exemplo: 30,35,15,5,10,20,25" /><br />
+	</h:panelGroup>
+	<br /><br />
+	
+	<h:panelGroup>
+		<h:commandButton id="buscar" styleClass="botao" reRender="resultadoBusca" value="Buscar" actionListener="#{controladorCadeiaMatriz.buscarColocacaoOtima}"/>
+	</h:panelGroup>
+	<br /><br /><br />
+	
+	<p:panel id="resultadoBusca">
+		<h:panelGroup>
+			<h:outputLabel for="colocacaoOtimaDosParenteses" value="Colocação Ótima dos Parenteses: " /><br />
+			<h:outputText id="colocacaoOtimaDosParenteses" value="#{controladorCadeiaMatriz.cadeiaMatriz.colocacaoOtimaDosParenteses}" label="Colocação Ótima dos Parenteses"
+						 size="30" style="width:283px;" />
+		</h:panelGroup>	
+		<br /><br /><br />	
+		<h:panelGroup>
+			<h:outputLabel for="numeroMinimoDeMultiplicacoesEscalares" value="Número Mínimo de Multiplicaçoes Escalares: " /><br />
+			<h:outputText id="numeroMinimoDeMultiplicacoesEscalares" value="#{controladorCadeiaMatriz.cadeiaMatriz.numeroMinimoDeMultiplicacoesEscalares}" label="Número Mínimo de Multiplicaçoes Escalares"
+		  				  size="30" style="width:283px;" />
+		</h:panelGroup>			
+	</p:panel>
+	<br /><br /><br />
+	
+	<h:panelGrid columns="2" cellpadding="5">	
+		<h:panelGroup>
+			<h:outputLabel for="botaoDownloadArtigo" value="Faça o Download do Artigo completo sobre o Problema de Multiplicação de Cadeia de Matrizes: " />
+			<p:commandButton id="botaoDownloadArtigo" value="Download >> Artigo" styleClass="botao" ajax="false">  
+    			<p:fileDownload value="#{controladorCadeiaMatriz.fileArtigo}" />  
+			</p:commandButton>
+		</h:panelGroup>
+	
+		<h:panelGroup>
+			<h:outputLabel for="botaoDownloadCodigoFonte" value="Faça o Download do Código Fonte completo desse sistema: " />
+			<p:commandButton id="botaoDownloadCodigoFonte" value="Download >> Código Fonte" styleClass="botao" ajax="false">  
+    			<p:fileDownload value="#{controladorCadeiaMatriz.fileCodigoFonte}" />  
+			</p:commandButton>
+		</h:panelGroup>	
+	</h:panelGrid>
+	
+</h:form>
+
+	</ui:define>	
+</ui:composition>		
+			
+</html>
